@@ -6,7 +6,7 @@ module.exports = {
   networks: {
 
     development: {
-     host: "134.209.74.110",     // Localhost (default: none)
+     host: "ganache-server",     // Localhost (default: none)
      port: 8545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
      },
