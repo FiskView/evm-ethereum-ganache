@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  ganache-server:
+    build: ./ganache-server
+    environment:
+      - HOST=${HOST}
+      - PORT=${PORT}
+      - MNEMONIC=${MNEMONIC}
+      - GAS_LIMIT=${GAS_LIMIT}
+      - NETWORK_ID=${NETWORK_ID}
+  truffle-vote:
+    container_name: truffle-vote
+    build: 
+      context: ./truffle-vote
+    depends_on:
+      ganache-server:
+        condition: service_healthy
+    command: >
+      sh -c "truffle compile && truffle migrate"
+    tty: true
